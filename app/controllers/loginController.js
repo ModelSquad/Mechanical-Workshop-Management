@@ -1,4 +1,5 @@
-var connection = require('../database/connection.js')
+var connectionInfo = require('../database/connection.js')
+var mysql = require('mysql')
 
 module.exports = {
 
@@ -6,15 +7,17 @@ module.exports = {
     var usuario = req.body.user;
     var password = req.body.pass;
 
-    connection.connect();
-    connection.query('SELECT `password` FROM `dbo.tUsuario` WHERE `nombre` = ?', usuario, function(err, rows, fields) {
-      return res.redirect('/home');
+    var connection = mysql.createConnection(connectionInfo);
+    connection.query('SELECT * FROM `dbo.tUsuario` WHERE `nombre` = ?', usuario, function(err, rows, fields) {
+      connection.end();
+
       if(!err) {
         if(rows.length > 0) {
-          var passwordFromDB = rows[0];
-
-          if(password === passwordFromDB) {
-            return res.redirect('/home')
+          var userDB = rows[0];
+          if(userDB.password === password) {
+            return res.redirect('/home');
+          } else {
+            throw err;
           }
 
         } else {
@@ -23,8 +26,6 @@ module.exports = {
       } else {
        throw err;
       }
-
-      connection.end();
       throw err;
     });
 
