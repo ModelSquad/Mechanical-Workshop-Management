@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 router.post('/', loginController.postLogin);
 
 router.get('/home', function(req, res, next) {
-  res.render('home');
-})
+  res.render('panel');
+});
 
 module.exports = router;

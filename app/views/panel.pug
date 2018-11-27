@@ -1,46 +1,48 @@
-.container-fluid
-  .row
-    .col-md-6
-      p(align='center')
-        | Material&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        select(style='width:20%' ,='' name='material' size='3' multiple='')
-          option Coche
-          option Avion
-          option Lancha
-          option Limusina
-          option Helicoptero
-          option Moto
+extends layout
+block content
+  .container-fluid
     .row
-      .col-md-12
-        table.table.table-sm(style='width:50%' ,='' border='1' cellspacing='0' cellpadding='0' align='center' multiple,='')
-          thead
-            tr
-              th
-                | ID
-              th
-                | NOMBRE
-              th
-                | FABRICANTE
-              th
-                | ID_TIPO
-    .row
-      .col-md-6(align='center' ,='')
-        p
-          | Nombre
-          input(type='text' size='50' maxlength='999' value='Nombre' name='nombre')
       .col-md-6
-    .row(align='center' ,='')
-      .col-md-6
-        p
-          | Fabricante
-          input(type='text' size='48' maxlength='999' value='Fabricante' name='fabricante')
-    .row
-      .col-md-3(,='' align='center')
-        button.btn.btn-success(type='button')
-          | Insertar
-        button.btn.btn-success(type='button')
-          | Borrar
-        button.btn.btn-success(type='button')
-          | Actualizar
-        button.btn.btn-success(type='button')
-          | Salir
+        p(align='center')
+          | Material
+          select(style='width:20%', name='material', size='3', multiple='')
+            option Coche
+            option Avion
+            option Lancha
+            option Limusina
+            option Helicoptero
+            option Moto
+      .row
+        .col-md-12
+          table.table.table-sm(style='width:50%', border='1', cellspacing='0', cellpadding='0', align='center', multiple='')
+            thead
+              tr
+                th
+                  | ID
+                th
+                  | NOMBRE
+                th
+                  | FABRICANTE
+                th
+                  | ID_TIPO
+      .row
+        .col-md-6(align='center')
+          p
+            | Nombre
+            input(type='text', size='50', maxlength='999', value='Nombre', name='nombre')
+        .col-md-6
+      .row(align='center')
+        .col-md-6
+          p
+            | Fabricante
+            input(type='text', size='48', maxlength='999', value='Fabricante', name='fabricante')
+      .row
+        .col-md-3(align='center')
+          button.btn.btn-success(type='button')
+            | Insertar
+          button.btn.btn-success(type='button')
+            | Borrar
+          button.btn.btn-success(type='button')
+            | Actualizar
+          button.btn.btn-success(type='button')
+            | Salir
