@@ -15,7 +15,7 @@ module.exports = {
         if(rows.length > 0) {
           var userDB = rows[0];
           if(userDB.password === password) {
-            return res.redirect('/home');
+            return res.redirect('/panel');
           } else {
             info='Usuario o constraseña incorrecto';
             //podemos hacer que se recarge la pagina con el info cambiado.

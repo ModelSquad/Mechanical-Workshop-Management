@@ -28,7 +28,7 @@ block content
       .row
         .col-md-6(align='center')
           p
-            | Nombre
+            | Name
             input(type='text', size='50', maxlength='999', value='Nombre', name='nombre')
         .col-md-6
       .row(align='center')
@@ -39,10 +39,10 @@ block content
       .row
         .col-md-3(align='center')
           button.btn.btn-success(type='button')
-            | Insertar
+            | Insert
           button.btn.btn-success(type='button')
-            | Borrar
+            | Delete
           button.btn.btn-success(type='button')
-            | Actualizar
-          button.btn.btn-success(type='button')
-            | Salir
+            | Update
+          button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';")
+            | Exit

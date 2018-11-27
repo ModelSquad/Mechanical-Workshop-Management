@@ -9,8 +9,13 @@ router.get('/', function(req, res, next) {
 
 router.post('/', loginController.postLogin);
 
-router.get('/home', function(req, res, next) {
+router.get('/panel', function(req, res, next) {
   res.render('panel');
+});
+
+/* EXIT APLICATION == RETURN TO HOME PAGE */
+router.get('/exit', function(req, res, next){
+  res.redirect('/');
 });
 
 module.exports = router;
