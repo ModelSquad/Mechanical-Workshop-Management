@@ -4,6 +4,7 @@ html
     title= title
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
     script(src="js/selectedController.js")
+    script(src="js/clearController.js")
   body
     block content
       .container-fluid
@@ -43,13 +44,13 @@ html
             .col-md-6(align='center')
               p
                 | Name
-                input(type='text', size='50', maxlength='999', value='Nombre', name='nombre')
+                input(type='text', size='50', maxlength='999', value='', name='nombre', id='nombre')
             .col-md-6
           .row(align='center')
             .col-md-6
               p
                 | Fabricante
-                input(type='text', size='48', maxlength='999', value='Fabricante', name='fabricante')
+                input(type='text', size='48', maxlength='999', value='', name='fabricante', id='fabricante')
           .row
             .col-md-3(align='center')
               button.btn.btn-success(type='button')
@@ -58,5 +59,7 @@ html
                 | Delete
               button.btn.btn-success(type='button')
                 | Update
+              button.btn.btn-success(type='button', id='clear')
+                | Clear
               button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';")
                 | Exit
