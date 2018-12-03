@@ -7,22 +7,26 @@ module.exports = {
     var manufacturer = req.body.fabricante;
     var action = req.body.boton; //get the action: add, update or delete
 
+    console.log(action);
+
     if(action==="add"){
       var connection = mysql.createConnection(connectionInfo);
-      var id;
+      var id_tipo;
+      var nombreTipo = req.get('referer').split('/')[3];
+      connection.query('SELECT * FROM `dbo.tTipoPieza` WHERE NOMBRE=\'' + nombreTipo + '\'', function(err, result, field) {
+        id_tipo = result[0]['ID_TIPO'];
+      });
 
       connection.query('SELECT MAX(ID) AS id FROM `dbo.tPiezas`',function(err, result, fields) {
       if(!err){
         id = result[0].id;
-        console.log(req.body);
         var values = {};
         values.ID = id+1;
         values.NOMBRE = name;
         values.FABRICANTE = manufacturer;
-        values.ID_TIPO = "A";
+        values.ID_TIPO = id_tipo;
         console.log(values);
 
-        var valuess = [24, 'as','as','sdf'];
           //var values = {id: id+1,name : name, manufacturer : manufacturer, tipo : name};
         connection.query('INSERT INTO `dbo.tPiezas` SET ?',[values],function(err, result, fields) {
             if (!err) {
@@ -39,7 +43,7 @@ module.exports = {
           }
         });
 
-        res.redirect('/');
+        res.redirect('back');
         }
         else if(action==="update"){
 
