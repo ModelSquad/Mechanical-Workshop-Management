@@ -1,48 +1,62 @@
-extends layout
-block content
-  .container-fluid
-    .row
-      .col-md-6
-        p(align='center')
-          | Material
-          select(style='width:20%', name='material', size='3', multiple='')
-            option Coche
-            option Avion
-            option Lancha
-            option Limusina
-            option Helicoptero
-            option Moto
-      .row
-        .col-md-12
-          table.table.table-sm(style='width:50%', border='1', cellspacing='0', cellpadding='0', align='center', multiple='')
-            thead
-              tr
-                th
-                  | ID
-                th
-                  | NOMBRE
-                th
-                  | FABRICANTE
-                th
-                  | ID_TIPO
-      .row
-        .col-md-6(align='center')
-          p
-            | Name
-            input(type='text', size='50', maxlength='999', value='Nombre', name='nombre')
-        .col-md-6
-      .row(align='center')
-        .col-md-6
-          p
-            | Fabricante
-            input(type='text', size='48', maxlength='999', value='Fabricante', name='fabricante')
-      .row
-        .col-md-3(align='center')
-          button.btn.btn-success(type='button')
-            | Insert
-          button.btn.btn-success(type='button')
-            | Delete
-          button.btn.btn-success(type='button')
-            | Update
-          button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';")
-            | Exit
+doctype html
+html
+  head
+    title= title
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="js/selectedController.js")
+  body
+    block content
+      .container-fluid
+        .row
+          .col-md-6
+            p(align='center')
+              | Material
+              select(style='width:20%', id='material', size='7', multiple='')
+                option Chapa
+                option Motor
+                option Iluminacion
+                option Sensores
+                option Cristales
+                option Pintura
+                option Otros
+          .row
+            .col-md-12
+              table.table.table-sm(style='width:50%', border='1', cellspacing='0', cellpadding='0', align='center', multiple='')
+                thead
+                  tr
+                    th
+                      | ID
+                    th
+                      | NOMBRE
+                    th
+                      | FABRICANTE
+                    th
+                      | ID_TIPO
+                tbody
+                  each item in rows
+                    tr
+                      td= item['ID']
+                      td= item['NOMBRE']
+                      td= item['FABRICANTE']
+                      td= item['ID_TIPO']
+          .row
+            .col-md-6(align='center')
+              p
+                | Name
+                input(type='text', size='50', maxlength='999', value='Nombre', name='nombre')
+            .col-md-6
+          .row(align='center')
+            .col-md-6
+              p
+                | Fabricante
+                input(type='text', size='48', maxlength='999', value='Fabricante', name='fabricante')
+          .row
+            .col-md-3(align='center')
+              button.btn.btn-success(type='button')
+                | Insert
+              button.btn.btn-success(type='button')
+                | Delete
+              button.btn.btn-success(type='button')
+                | Update
+              button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';")
+                | Exit

@@ -61,7 +61,7 @@ CREATE TABLE `dbo.tPiezas` (
 
 LOCK TABLES `dbo.tPiezas` WRITE;
 /*!40000 ALTER TABLE `dbo.tPiezas` DISABLE KEYS */;
-INSERT INTO `dbo.tPiezas` VALUES (1,'PARAGOLPES DELANTERO NEGRO-LISO A IMPRIMAR','MAZDA','A'),(2,'PARAGOLPES TRASERO-IMPRIMADO','MAZDA','A'),(3,'REJILLA NEGRA','MAZDA','A'),(4,'ALETA DELANTERA DCH CON AUJERO PARA PILOTO CX3 16','MAZDA','A'),(5,'ALETA DELANTERA IZQ CON AUJERO PARA PILOTO CX3 16','MAZDA','A'),(6,'Bombillas luz delantera','RENAULT','C'),(7,'Bombillas señalización delantera','RENAULT','C'),(8,'Bombillas luz trasera','RENAULT','C'),(9,'Bombillas señalización trasera','RENAULT','C'),(10,'Estuches de bombillas','RENAULT','C'),(11,'Iluminación LED','RENAULT','C'),(12,'Bombillas interior','RENAULT','C'),(13,'Bombillas Xenon','RENAULT','C'),(14,'Juntas y otras piezas del motor','FORD','B'),(15,'Alimentación','FORD','B'),(16,'Kits de distribución','FORD','B'),(17,'Correas','FORD','B'),(18,'Poleas','FORD','B'),(19,'Kits','FORD','B'),(20,'Válvulas EGR','FORD','B'),(21,'Herramienta específica','FORD','B'),(22,'Turbocompresores','FORD','B'),(23,'Sensores electrónicos y medidores de flujo','FORD','B'),(24,'Cable de acelerador y starter','FORD','B');
+INSERT INTO `dbo.tPiezas` VALUES (1,'PARAGOLPES DELANTERO NEGRO-LISO A IMPRIMAR','MAZDA','A'),(2,'PARAGOLPES TRASERO-IMPRIMADO','MAZDA','A'),(3,'REJILLA NEGRA','MAZDA','A'),(4,'ALETA DELANTERA DCH CON AUJERO PARA PILOTO CX3 16','MAZDA','A'),(5,'ALETA DELANTERA IZQ CON AUJERO PARA PILOTO CX3 16','MAZDA','A'),(6,'Bombillas luz delantera','RENAULT','C'),(7,'Bombillas señalización delantera','RENAULT','C'),(8,'Bombillas luz trasera','RENAULT','C'),(9,'Bombillas señalización trasera','RENAULT','C'),(10,'Estuches de bombillas','RENAULT','C'),(11,'Iluminacion LED','RENAULT','C'),(12,'Bombillas interior','RENAULT','C'),(13,'Bombillas Xenon','RENAULT','C'),(14,'Juntas y otras piezas del motor','FORD','B'),(15,'Alimentación','FORD','B'),(16,'Kits de distribución','FORD','B'),(17,'Correas','FORD','B'),(18,'Poleas','FORD','B'),(19,'Kits','FORD','B'),(20,'Válvulas EGR','FORD','B'),(21,'Herramienta específica','FORD','B'),(22,'Turbocompresores','FORD','B'),(23,'Sensores electrónicos y medidores de flujo','FORD','B'),(24,'Cable de acelerador y starter','FORD','B');
 /*!40000 ALTER TABLE `dbo.tPiezas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `dbo.tTipoPieza` (
 
 LOCK TABLES `dbo.tTipoPieza` WRITE;
 /*!40000 ALTER TABLE `dbo.tTipoPieza` DISABLE KEYS */;
-INSERT INTO `dbo.tTipoPieza` VALUES ('A','Chapa'),('B','Motor'),('C','Iluminación'),('D','Sensores'),('E','Cristales'),('F','Pintura'),('G','Otros');
+INSERT INTO `dbo.tTipoPieza` VALUES ('A','Chapa'),('B','Motor'),('C','Iluminacion'),('D','Sensores'),('E','Cristales'),('F','Pintura'),('G','Otros');
 /*!40000 ALTER TABLE `dbo.tTipoPieza` ENABLE KEYS */;
 UNLOCK TABLES;
 
