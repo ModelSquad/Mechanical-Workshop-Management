@@ -8,59 +8,60 @@ html
   body
     block content
       .container-fluid
-        .row
-          .col-md-6
-            p(align='center')
-              | Material
-              select(style='width:20%', id='material', size='7', multiple='')
-                option Chapa
-                option Motor
-                option Iluminacion
-                option Sensores
-                option Cristales
-                option Pintura
-                option Otros
+        form.delete-form.validate-form(action='http://localhost:3000/action', method='POST')
           .row
-            .col-md-12
-              table.table.table-sm(style='width:50%', border='1', cellspacing='0', cellpadding='0', align='center', multiple='')
-                thead
-                  tr
-                    th
-                      | ID
-                    th
-                      | NOMBRE
-                    th
-                      | FABRICANTE
-                    th
-                      | ID_TIPO
-                tbody
-                  each item in rows
+            .col-md-6
+              p(align='center')
+                | Material
+                select(style='width:20%', id='material', size='7', multiple='')
+                  option Chapa
+                  option Motor
+                  option Iluminacion
+                  option Sensores
+                  option Cristales
+                  option Pintura
+                  option Otros
+            .row
+              .col-md-12
+                table.table.table-sm(style='width:50%', border='1', cellspacing='0', cellpadding='0', align='center', multiple='')
+                  thead
                     tr
-                      td= item['ID']
-                      td= item['NOMBRE']
-                      td= item['FABRICANTE']
-                      td= item['ID_TIPO']
-          .row
-            .col-md-6(align='center')
-              p
-                | Name
-                input(type='text', size='50', maxlength='999', value='', name='nombre', id='nombre')
-            .col-md-6
-          .row(align='center')
-            .col-md-6
-              p
-                | Fabricante
-                input(type='text', size='48', maxlength='999', value='', name='fabricante', id='fabricante')
-          .row
-            .col-md-3(align='center')
-              form.add-form.validate-form(action='http://localhost:3000/add', method='POST')
-                button.btn.btn-success(type='submit')
-                  | Insert
-              form.delete-form.validate-form(action='http://localhost:3000/delete', method='POST')
-                button.btn.btn-success(type='submit')
-                  | Delete
-              form.delete-form.validate-form(action='http://localhost:3000/update', method='POST')
-                button.btn.btn-success(type='submit')
-                  | Update
-              button#clear.btn.btn-success(type='button') Clear
-              button.btn.btn-success(type='button', onclick="window.location = 'http://localhost:3000/exit ';") Exit
+                      th
+                        | ID
+                      th
+                        | NOMBRE
+                      th
+                        | FABRICANTE
+                      th
+                        | ID_TIPO
+                  tbody
+                    each item in rows
+                      tr
+                        td= item['ID']
+                        td= item['NOMBRE']
+                        td= item['FABRICANTE']
+                        td= item['ID_TIPO']
+            .row
+              .col-md-6(align='center')
+                p
+                  | Name
+                  input(type='text', size='50', maxlength='999', value='', name='nombre', id='nombre')
+              .col-md-6
+            .row(align='center')
+              .col-md-6
+                p
+                  | Fabricante
+                  input(type='text', size='48', maxlength='999', value='', name='fabricante', id='fabricante')
+                  .row
+                      .col-md-3(align='center')
+                        button.btn.btn-success(type='submit', name='boton', value='add')
+                          | Insert
+                        button.btn.btn-success(type='submit', name='boton', value='insert')
+                          | Delete
+                        button.btn.btn-success(type='submit', name='boton', value='delete')
+                          | Update
+                        button.btn.btn-success(type='button', id='clear')
+                          | Clear
+                        button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';")
+                          | Exit
+                        input(style="display:none;",type='text', size='48', maxlength='999', value='', name='hiddenText', id='hiddenText')

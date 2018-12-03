@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var loginController = require('.././controllers/loginController.js');
 var queryController = require('.././controllers/queryController.js');
+var addController = require('.././controllers/actionButtonsController.js');// = require('.././controllers/addController.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -56,6 +57,9 @@ router.get('/Motor', function(req, res, next) {
   });
 });
 
+/* BUTTONS */
+
+router.post('/action',  addController.addElement);
 /* EXIT APLICATION == RETURN TO HOME PAGE */
 router.get('/exit', function(req, res, next){
   res.redirect('/');
