@@ -1,8 +1,8 @@
 var connectionInfo = {
   host  : 'localhost',
   port  : 3306,
-  user  : 'jaysusm',
-  password : 'password',
+  user  : 'root',
+  password : 'root',
   database : 'TrabajoGI1819'
 };
 
