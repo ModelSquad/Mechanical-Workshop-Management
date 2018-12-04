@@ -66,6 +66,8 @@ module.exports = {
 
         }
         else if(action==="delete"){
+            var id = req.body.table.ID;
+            connection.query('DELETE FROM `dbo.tPiezas` where ID = ' + id);
 
         }
 
