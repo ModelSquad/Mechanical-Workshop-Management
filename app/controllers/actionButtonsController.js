@@ -10,10 +10,17 @@ module.exports = {
     var errorOcurred = false;
 
     if(req.session.rol==='invitado'){
+      dialog.err('No tienes permiso para eso');
+      res.redirect('/panel');
       return;
     }
 
     if(action==="add"){
+      if(req.session.rol === 'usuario') {
+        dialog.err('No tienes permiso para eso');
+        res.redirect('back');
+        return;
+      }
       console.log(name === '');
       console.log(name);
       if(name === '' || manufacturer === '' || name === undefined || manufacturer === undefined) {
@@ -69,6 +76,11 @@ module.exports = {
         res.redirect('back');
         }
         else if(action==="update"){
+          if(req.session.rol === 'usuario') {
+            dialog.err('No tienes permiso para eso');
+            res.redirect('back');
+            return;
+          }
           var connection = mysql.createConnection(connectionInfo);
 
 
@@ -87,6 +99,11 @@ module.exports = {
 
         }
         else if(action==="delete"){
+          if(req.session.rol === 'usuario') {
+            dialog.err('No tienes permiso para eso');
+            res.redirect('back');
+            return;
+          }
           console.log(action);
             var connection = mysql.createConnection(connectionInfo);
             var id = req.body.rowSelect;
