@@ -105,18 +105,21 @@ module.exports = {
           console.log(action);
             var connection = mysql.createConnection(connectionInfo);
             var id = req.body.rowSelect;
-            if(id == undefined){
-              alert("select a row");
+            if(typeof id == "undefined"){
+              dialog.err("select a row");
+              errorOcurred = true;
             }
-            connection.query('DELETE  FROM `dbo.tPiezas` where ID = ' + id, function(err, result, fields){
-              if (!err) {
-                      console.log('Successfully removed information.');
-                  } else {
-                      console.log(result);
-                      console.log(err);
-                      console.log('Was not able to remove information from database.');
-                  }
-            });
+            if(!errorOcurred){
+              connection.query('DELETE  FROM `dbo.tPiezas` where ID = ' + id, function(err, result, fields){
+                if (!err) {
+                        console.log('Successfully removed information.');
+                    } else {
+                        console.log(result);
+                        console.log(err);
+                        console.log('Was not able to remove information from database.');
+                    }
+              });
+            }
           return res.redirect('back');
         }
 
