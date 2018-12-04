@@ -36,11 +36,11 @@ html
                         | ID_TIPO
                   tbody
                     each item in rows
-                      tr
-                        td= item['ID']
-                        td= item['NOMBRE']
-                        td= item['FABRICANTE']
-                        td= item['ID_TIPO']
+                      tr(tabindex='0' role='button' data-bind='click SelectOnClick, event {keypress: SelectOnKeyup}')
+                        td(height='20px', data-bind="item['ID']")= item['ID']
+                        td(height='20px', data-bind='item: NOMBRE')= item['NOMBRE']
+                        td(height='20px', data-bind='item: FABRICANTE')= item['FABRICANTE']
+                        td(height='20px', data-bind='item: ID_TIPO')= item['ID_TIPO']
             .row
               .col-md-6(align='center')
                 p

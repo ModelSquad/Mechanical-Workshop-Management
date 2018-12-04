@@ -9,15 +9,14 @@ module.exports = {
     var action = req.body.boton; //get the action: add, update or delete
     var errorOcurred = false;
 
-    if(name === '' || manufacturer === '') {
-      dialog.err('No dejes ningún campo vacío');
-      res.redirect('back');
-      return;
-    }
-
-    console.log(action);
-
     if(action==="add"){
+      if(name === '' || manufacturer === '') {
+        dialog.err('No dejes ningún campo vacío');
+        res.redirect('back');
+        return;
+      }
+
+      console.log(action);
       var connection = mysql.createConnection(connectionInfo);
       var id_tipo;
       var nombreTipo = req.get('referer').split('/')[3];
