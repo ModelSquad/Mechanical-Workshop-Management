@@ -50,13 +50,13 @@ html
               .col-md-6(align='center')
                 p
                   | Name
-                  input(type='text', size='50', maxlength='999', value='', id='nombre')
+                  input(type='text', size='50', maxlength='999', value='', id='nombre', name='nombre')
               .col-md-6
             .row(align='center')
               .col-md-6
                 p
                   | Fabricante
-                  input(type='text', size='48', maxlength='999', value='', id='fabricante')
+                  input(type='text', size='48', maxlength='999', value='', id='fabricante', name='fabricante')
                   .row
                       .col-md-3(align='center')
                         button.btn.btn-success(type='submit', name='boton', value='add')
@@ -69,4 +69,3 @@ html
                           | Clear
                         button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';")
                           | Exit
-                        
