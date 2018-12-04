@@ -10,7 +10,9 @@ module.exports = {
     var errorOcurred = false;
 
     if(action==="add"){
-      if(name === '' || manufacturer === '') {
+      console.log(name === '');
+      console.log(name);
+      if(name === '' || manufacturer === '' || name === undefined || manufacturer === undefined) {
         dialog.err('No dejes ningún campo vacío');
         res.redirect('back');
         return;
