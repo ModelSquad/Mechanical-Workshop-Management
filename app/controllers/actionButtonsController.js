@@ -63,13 +63,50 @@ module.exports = {
         res.redirect('back');
         }
         else if(action==="update"){
+          var connection = mysql.createConnection(connectionInfo);
+          var id_tipo;
+          var nombreTipo = req.get('referer').split('/')[3];
+          connection.query('SELECT * FROM `dbo.tTipoPieza` WHERE NOMBRE=\'' + nombreTipo + '\'', function(err, result, field) {
+            if(result[0] === undefined) {
+              dialog.err('Selecciona un tipo antes');
+              errorOcurred = true;
+              return;
+            }
+            id_tipo = result[0]['ID_TIPO'];
+          });
+
+          if(errorOcurred) {
+            res.redirect('back');
+            return;
+          }
+          var values = {};
+          //values.ID = coger id de la tabla;
+          values.NOMBRE = name;
+          values.FABRICANTE = manufacturer;
+          values.ID_TIPO = id_tipo;
+          console.log(values);
+
+              //var values = {id: id+1,name : name, manufacturer : manufacturer, tipo : name};
+          connection.query('UPDATE `dbo.tPiezas` SET ?',[values],function(err, result, fields) {
+               if (!err) {
+                       console.log('Successfully updated information.');
+                       console.log(err);
+               } else {
+                      console.log(result);
+                      console.log(err);
+                      console.log('Was not able to update information to database.');
+               }
+               connection.end();
+          });
+        res.redirect('back');
 
         }
         else if(action==="delete"){
+            var id = req.body.table.ID;
+            connection.query('DELETE FROM `dbo.tPiezas` where ID = ' + id);
 
         }
 
   }
-
 
   }
