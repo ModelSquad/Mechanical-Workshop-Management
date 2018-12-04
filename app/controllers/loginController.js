@@ -8,6 +8,8 @@ module.exports = {
     var password = req.body.pass;
     var info = req.body.txt1;
 
+
+
     var connection = mysql.createConnection(connectionInfo);
     connection.query('SELECT * FROM `dbo.tUsuario` WHERE `nombre` = ?', usuario, function(err, rows, fields) {
       connection.end();
@@ -15,6 +17,12 @@ module.exports = {
         if(rows.length > 0) {
           var userDB = rows[0];
           if(userDB.password === password) {
+            // store email ,user and rol in session
+            req.session.email = usuario;
+            req.session.password = password;
+
+            req.session.rol = rows[0].rolName;
+            
             return res.redirect('/panel');
           } else {
             info='Usuario o constraseña incorrecto';

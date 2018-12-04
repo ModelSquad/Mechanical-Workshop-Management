@@ -4,10 +4,15 @@ var dialog = require('dialog');
 
 module.exports = {
   addElement : function(req, res, next){
+    console.log(req.body);
     var name = req.body.nombre;
     var manufacturer = req.body.fabricante;
     var action = req.body.boton; //get the action: add, update or delete
     var errorOcurred = false;
+
+    if(req.session.rol==='invitado'){
+      return;
+    }
 
     if(action==="add"){
       console.log(name === '');

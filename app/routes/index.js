@@ -12,56 +12,94 @@ router.get('/', function(req, res, next) {
 router.post('/', loginController.postLogin);
 
 router.get('/panel', function(req, res, next) {
-  res.render('panel', {rows: []});
+  if(!req.session.email){
+    res.redirect('/');
+  }
+  else{
+    res.render('panel', {rows: []});
+  }
+
 });
 
 router.get('/Chapa', function(req, res, next) {
-  queryController.loadData("Chapa", function(data) {
+
+  if(!req.session.email){
+    res.redirect('/');
+  }
+  else if (req.session.rol!=='invitado'){
+    queryController.loadData("Chapa", function(data) {
     return res.render('panel', {rows: data});
   });
+}
 });
 
 router.get('/Iluminacion', function(req, res, next) {
+  if(!req.session.email){
+    res.redirect('/');
+  }else if (req.session.rol!=='invitado'){
   queryController.loadData("Iluminacion", function(data) {
     return res.render('panel', {rows: data});
   });
+}
 });
 
 router.get('/Sensores', function(req, res, next) {
+  if(!req.session.email){
+    res.redirect('/');
+  }
+  else if (req.session.rol!=='invitado'){
   queryController.loadData("Sensores", function(data) {
     return res.render('panel', {rows: data});
-  });
+  });}
 });
 
 router.get('/Cristales', function(req, res, next) {
+  if(!req.session.email){
+    res.redirect('/');
+  }else if (req.session.rol!=='invitado'){
   queryController.loadData("Cristales", function(data) {
     return res.render('panel', {rows: data});
   });
+}
 });
 
 router.get('/Pintura', function(req, res, next) {
+  if(!req.session.email){
+    res.redirect('/');
+  }else if (req.session.rol!=='invitado'){
   queryController.loadData("Pintura", function(data) {
     return res.render('panel', {rows: data});
   });
+}
 });
 
 router.get('/Otros', function(req, res, next) {
+  if(!req.session.email){
+    res.redirect('/');
+  }else if (req.session.rol!=='invitado'){
   queryController.loadData("Otros", function(data) {
     return res.render('panel', {rows: data});
   });
+}
 });
 
 router.get('/Motor', function(req, res, next) {
+  if(!req.session.email){
+    res.redirect('/');
+  }else if (req.session.rol!=='invitado'){
   queryController.loadData("Motor", function(data) {
     return res.render('panel', {rows: data});
   });
+}
 });
 
 /* BUTTONS */
 
 router.post('/action',  addController.addElement);
+
 /* EXIT APLICATION == RETURN TO HOME PAGE */
 router.get('/exit', function(req, res, next){
+  req.session.destroy();
   res.redirect('/');
 });
 
