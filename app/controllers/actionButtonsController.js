@@ -102,9 +102,22 @@ module.exports = {
 
         }
         else if(action==="delete"){
-            var id = req.body.table.ID;
-            connection.query('DELETE FROM `dbo.tPiezas` where ID = ' + id);
-
+          console.log(action);
+            var connection = mysql.createConnection(connectionInfo);
+            var id = req.body.rowSelect;
+            if(id == undefined){
+              alert("select a row");
+            }
+            connection.query('DELETE  FROM `dbo.tPiezas` where ID = ' + id, function(err, result, fields){
+              if (!err) {
+                      console.log('Successfully removed information.');
+                  } else {
+                      console.log(result);
+                      console.log(err);
+                      console.log('Was not able to remove information from database.');
+                  }
+            });
+          return res.redirect('back');
         }
 
   }
