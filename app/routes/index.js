@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 router.post('/', loginController.postLogin);
 
 router.get('/panel', function(req, res, next) {
+  console.log(req.session);
   if(!req.session.email){
     res.redirect('/');
   }
@@ -22,7 +23,7 @@ router.get('/panel', function(req, res, next) {
 });
 
 router.get('/Chapa', function(req, res, next) {
-
+console.log(req.session);
   if(!req.session.email){
     res.redirect('/');
   }
