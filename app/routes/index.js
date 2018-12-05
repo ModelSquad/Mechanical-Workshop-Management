@@ -3,6 +3,7 @@ var router = express.Router();
 var loginController = require('.././controllers/loginController.js');
 var queryController = require('.././controllers/queryController.js');
 var addController = require('.././controllers/actionButtonsController.js');// = require('.././controllers/addController.js');
+var dialog = require('dialog');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,19 +30,23 @@ console.log(req.session);
   }
   else if (req.session.rol!=='invitado'){
     queryController.loadData("Chapa", function(data) {
-    return res.render('panel', {rows: data});
-  });
-}
+      return res.render('panel', {rows: data});
+    });
+  } else {
+    res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
+  }
 });
 
 router.get('/Iluminacion', function(req, res, next) {
   if(!req.session.email){
     res.redirect('/');
   }else if (req.session.rol!=='invitado'){
-  queryController.loadData("Iluminacion", function(data) {
-    return res.render('panel', {rows: data});
-  });
-}
+    queryController.loadData("Iluminacion", function(data) {
+      return res.render('panel', {rows: data});
+    });
+  } else {
+    res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
+  }
 });
 
 router.get('/Sensores', function(req, res, next) {
@@ -49,59 +54,69 @@ router.get('/Sensores', function(req, res, next) {
     res.redirect('/');
   }
   else if (req.session.rol!=='invitado'){
-  queryController.loadData("Sensores", function(data) {
-    return res.render('panel', {rows: data});
-  });}
-});
-
-router.get('/Cristales', function(req, res, next) {
-  if(!req.session.email){
-    res.redirect('/');
-  }else if (req.session.rol!=='invitado'){
-  queryController.loadData("Cristales", function(data) {
-    return res.render('panel', {rows: data});
+    queryController.loadData("Sensores", function(data) {
+      return res.render('panel', {rows: data});
+    });} else {
+      res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
+    }
   });
-}
-});
 
-router.get('/Pintura', function(req, res, next) {
-  if(!req.session.email){
-    res.redirect('/');
-  }else if (req.session.rol!=='invitado'){
-  queryController.loadData("Pintura", function(data) {
-    return res.render('panel', {rows: data});
+  router.get('/Cristales', function(req, res, next) {
+    if(!req.session.email){
+      res.redirect('/');
+    }else if (req.session.rol!=='invitado'){
+      queryController.loadData("Cristales", function(data) {
+        return res.render('panel', {rows: data});
+      });
+    } else {
+      res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
+    }
   });
-}
-});
 
-router.get('/Otros', function(req, res, next) {
-  if(!req.session.email){
-    res.redirect('/');
-  }else if (req.session.rol!=='invitado'){
-  queryController.loadData("Otros", function(data) {
-    return res.render('panel', {rows: data});
+  router.get('/Pintura', function(req, res, next) {
+    if(!req.session.email){
+      res.redirect('/');
+    }else if (req.session.rol!=='invitado'){
+      queryController.loadData("Pintura", function(data) {
+        return res.render('panel', {rows: data});
+      });
+    } else {
+      res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
+    }
   });
-}
-});
 
-router.get('/Motor', function(req, res, next) {
-  if(!req.session.email){
-    res.redirect('/');
-  }else if (req.session.rol!=='invitado'){
-  queryController.loadData("Motor", function(data) {
-    return res.render('panel', {rows: data});
+  router.get('/Otros', function(req, res, next) {
+    if(!req.session.email){
+      res.redirect('/');
+    }else if (req.session.rol!=='invitado'){
+      queryController.loadData("Otros", function(data) {
+        return res.render('panel', {rows: data});
+      });
+    } else {
+      res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
+    }
   });
-}
-});
 
-/* BUTTONS */
+  router.get('/Motor', function(req, res, next) {
+    if(!req.session.email){
+      res.redirect('/');
+    }else if (req.session.rol!=='invitado'){
+      queryController.loadData("Motor", function(data) {
+        return res.render('panel', {rows: data});
+      });
+    } else {
+      res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
+    }
+  });
 
-router.post('/action',  addController.addElement);
+  /* BUTTONS */
 
-/* EXIT APLICATION == RETURN TO HOME PAGE */
-router.get('/exit', function(req, res, next){
-  req.session.destroy();
-  res.redirect('/');
-});
+  router.post('/action',  addController.addElement);
 
-module.exports = router;
+  /* EXIT APLICATION == RETURN TO HOME PAGE */
+  router.get('/exit', function(req, res, next){
+    req.session.destroy();
+    res.redirect('/');
+  });
+
+  module.exports = router;

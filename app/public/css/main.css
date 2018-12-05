@@ -1,13 +1,9 @@
-
-
-
-
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
 @font-face {
   font-family: OpenSans-Regular;
-  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+  src: url('../fonts/OpenSans/OpenSans-Regular.ttf');
 }
 
 
@@ -16,8 +12,8 @@
 [ RESTYLE TAG ]*/
 
 * {
-	margin: 0px; 
-	padding: 0px; 
+	margin: 0px;
+	padding: 0px;
 	box-sizing: border-box;
 }
 
@@ -136,7 +132,7 @@ iframe {
 }
 
 .container-login100 {
-  width: 100%;  
+  width: 100%;
   min-height: 100vh;
   display: -webkit-box;
   display: -webkit-flex;
@@ -214,7 +210,7 @@ input.input100 {
 /*------------------------------------------------------------------
 [ Focus Input ]*/
 
-.focus-input100-1, 
+.focus-input100-1,
 .focus-input100-2 {
   display: block;
   position: absolute;
@@ -415,6 +411,3 @@ input.input100 {
     opacity: 1;
   }
 }
-
-
-
