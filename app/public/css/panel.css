@@ -3,6 +3,7 @@
 
 
 
+
 table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
@@ -13,10 +14,72 @@ table {
 }
 
 input{
-  border-radius: 25px;
-  background: #b3d9ff;
-
+  border-radius: 5px;
+  background: #ddd;
+  padding-left: 5px;
+  margin-left: 20px;
 }
+
+/* MATERIAL SELECTOR */
+
+#materialTipo{
+  margin-left: 20px;
+}
+.entrada, #materialLabel {
+  color:white;
+  font-weight: bold;
+}
+
+select{
+  background: #3366cc;
+  margin-left: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+.custom-select select {
+  display: none; /*hide original SELECT element:*/
+}
+.select-selected {
+  background-color: DodgerBlue;
+}
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.select-hide {
+  display: none;
+}
+
+.custom-select {
+  position: relative;
+  font-family: Arial;
+}
+
 
 p, option, button {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -58,4 +121,52 @@ th {
   text-align: left;
   background-color: #3366cc;
   color: white;
+}
+
+/* BUTTONS */
+
+button {
+  position: relative;
+  background-color: #3366cc;
+
+  font-size: 14px;
+    font-weight: bold;
+  color: #FFFFFF;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  border-color: black;
+  border-collapse: collapse;
+  border-width: thin;
+
+}
+
+button:after {
+  content: "";
+  background: #66b3ff;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+button:hover {
+  background-color: #eaeffa;
+  color: black;
 }

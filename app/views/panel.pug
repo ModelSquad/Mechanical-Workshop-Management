@@ -13,9 +13,9 @@ html
         form.delete-form.validate-form(action='http://localhost:3000/action', method='POST')
           .row
             .col-md-6
-              p(align='center')
+              p(id='materialLabel',align='center')
                 | Material
-                select(style='width:20%', id='material', size='7', multiple='')
+                select /*(style='width:10%', id='material', size='3', multiple='')*/
                   option Chapa
                   option Motor
                   option Iluminacion
@@ -49,13 +49,13 @@ html
                           input(type="radio", name="rowSelect", value=item['ID'])
             .row
               .col-md-6(align='center')
-                p
-                  | Name
+                p(class='entrada')
+                  | Nombre
                   input(type='text', size='50', maxlength='999', value='', id='nombre', name='nombre')
               .col-md-6
             .row(align='center')
               .col-md-6
-                p
+                p(class='entrada')
                   | Fabricante
                   input(type='text', size='48', maxlength='999', value='', id='fabricante', name='fabricante')
                   .row
@@ -66,7 +66,7 @@ html
                           | Delete
                         button.btn.btn-success(type='submit', name='boton', value='update')
                           | Update
-                        button.btn.btn-success(type='button', id='clear')
+                        button.btn.btn-success(type='button', id='clear', value='clear')
                           | Clear
-                        button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';")
+                        button.btn.btn-success(type='button' onclick="window.location = 'http://localhost:3000/exit ';", value='exit')
                           | Exit
