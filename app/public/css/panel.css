@@ -1,10 +1,21 @@
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 [TABLE]*/
 
+
+
 table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  border: 2px solid black;
+  border-radius: 25px;
+
+}
+
+input{
+  border-radius: 25px;
+  background: #b3d9ff;
+
 }
 
 p, option, button {
@@ -17,18 +28,34 @@ p {
 }
 
 td, th {
-  border: 1px solid #ddd;
+  border: 1px solid black;
   padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2;}
+tr:nth-child(even){background-color: #7094db;}
+tr:nth-child(odd){background-color: #d6e0f5;}
 
-tr:hover {background-color: #ddd;}
+td:nth-child(1) {
+  color: #f2f2f2;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-weight: bold;
+}
+
+td:nth-child(3) {
+  text-align: center;
+}
+
+td:nth-child(4) {
+  text-align: center;
+}
+
+
+tr:hover {background-color: #eaeffa;}
 
 th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: #3366cc;
   color: white;
 }
