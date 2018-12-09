@@ -25,14 +25,12 @@ module.exports = {
             
             return res.redirect('/panel');
           } else {
-            info='Usuario o constraseña incorrecto';
-            //podemos hacer que se recarge la pagina con el info cambiado.
+            req.flash('mensajeError','Usuario o contraseña incorrecta');
             return res.redirect('/');
           }
 
         } else {
-          info='Usuario o constraseña incorrecto';
-          //podemos hacer que se recarge la pagina con el info cambiado.
+          req.flash('mensajeError','Usuario o contraseña incorrecta');
           return res.redirect('/');
         }
       } else {

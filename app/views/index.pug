@@ -45,7 +45,9 @@ html(lang='en')
               button.login100-form-btn
                 | Sign in
             .text-center.p-t-45.p-b-4
-              span.txt1
+            if mensajeError && mensajeError.length>0 
+              p= mensajeError
+          
 
     // ===============================================================================================
     script(src='vendor/jquery/jquery-3.2.1.min.js')

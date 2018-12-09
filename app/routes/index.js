@@ -7,7 +7,7 @@ var dialog = require('dialog');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Mechanical Workshop Management APP' });
+  res.render('index', { title: 'Mechanical Workshop Management APP', message : req.flash('mensajeError')});
 });
 
 router.post('/', loginController.postLogin);

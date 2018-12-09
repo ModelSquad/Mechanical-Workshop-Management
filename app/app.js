@@ -7,7 +7,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var flash = require('connect-flash');
 var app = express();
+
 
 // Session configuration
 var session = require('express-session');
@@ -23,6 +25,13 @@ app.use(session({
 }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+
+//connect-flash
+app.use(flash());
+app.use(function(req, res, next){
+ res.locals.mensajeError= req.flash('mensajeError');
+ next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
