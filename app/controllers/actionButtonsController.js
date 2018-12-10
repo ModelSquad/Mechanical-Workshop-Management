@@ -3,7 +3,7 @@ var connectionInfo = require('.././database/connection.js');
 var dialog = require('dialog');
 
 module.exports = {
-  addElement : function(req, res, next){
+  actionElement : function(req, res, next){
     var name = req.body.nombre;
     var manufacturer = req.body.fabricante;
     var action = req.body.boton; //get the action: add, update or delete
@@ -56,8 +56,6 @@ module.exports = {
         values.FABRICANTE = manufacturer;
         values.ID_TIPO = id_tipo;
         console.log(values);
-
-          //var values = {id: id+1,name : name, manufacturer : manufacturer, tipo : name};
         connection.query('INSERT INTO `dbo.tPiezas` SET ?',[values],function(err, result, fields) {
             if (!err) {
                     console.log('Successfully added information.');

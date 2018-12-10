@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
 router.post('/', loginController.postLogin);
 
 router.get('/panel', function(req, res, next) {
-  console.log(req.session);
   if(!req.session.email){
     res.redirect('/');
   }
@@ -24,7 +23,6 @@ router.get('/panel', function(req, res, next) {
 });
 
 router.get('/Chapa', function(req, res, next) {
-console.log(req.session);
   if(!req.session.email){
     res.redirect('/');
   }
@@ -102,7 +100,7 @@ router.get('/Sensores', function(req, res, next) {
       res.redirect('/');
     }else if (req.session.rol!=='invitado'){
       queryController.loadData("Motor", function(data) {
-        return res.render('panel', {rows: data});
+        res.render('panel', {rows: data});
       });
     } else {
       res.render('panel', {rows: []}); dialog.err('No tienes permisos para esto');
@@ -111,7 +109,7 @@ router.get('/Sensores', function(req, res, next) {
 
   /* BUTTONS */
 
-  router.post('/action',  addController.addElement);
+  router.post('/action',  addController.actionElement);
 
   /* EXIT APLICATION == RETURN TO HOME PAGE */
   router.get('/exit', function(req, res, next){
